@@ -14,11 +14,13 @@ namespace Try426
     {
         protected void Application_Start()
         {
+            //want to see if this is an issue
             Database.SetInitializer(new BookDBInitializer());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
         }
     }
 }
