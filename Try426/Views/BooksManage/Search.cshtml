@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Try426.Models.Book>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+@*@using (Html.BeginForm("Search", "BooksManage", FormMethod.Get))
+{
+    <label title="Search Books"></label>
+    <input type="text" name="q" id="q" />
+    <input type="submit" value="Search" />
+}*@
+
+@using (Ajax.BeginForm(
+    new AjaxOptions
+    {
+        HttpMethod = "get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "updateList",
+        LoadingElementId="ajax-loader"
+    }))
+{
+    <label title="Search Books">Search Books</label>
+    <input type="search" name="q" id="q" />
+    <input  type="submit" value="Search" />
+    <img id="ajax-loader" src="@Url.Content("~/Images/ajax-loader.gif")" style="display:none" />
+
+}
+
+
+@*@using (Ajax.BeginForm(
+    new AjaxOptions
+    {
+        HttpMethod = "get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "updateList",
+        LoadingElementId = "ajax-loader2",
+    }))*@
+@using (Ajax.BeginForm(
+    "Search", null,
+    new AjaxOptions
+    {
+        HttpMethod = "get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "updateList",
+        LoadingElementId = "ajax-loader2",
+    },
+    new { id="autoSearchForm"}
+    ))
+{
+    <label title="Search Books_Auto">Search Books_Auto</label>
+    <input type="search" name="q" id="q" data-book-autocomplete="@Url.Action("Autocomplete")" />
+    <input id="autoSubmit"  type="submit" value="Auto Search" />
+    <img id="ajax-loader2" src="@Url.Content("~/Images/ajax-loader.gif")" style="display:none" />
+
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>Search Result @DateTime.Now.ToLongTimeString()</p>
+
+@Html.Partial("_BookList", Model)
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/Try426")
+
+}

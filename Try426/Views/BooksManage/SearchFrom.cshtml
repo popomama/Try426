@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "SearchFrom";
+}
+
+<h2>SearchFrom</h2>
+@using(Html.BeginForm("Search", "BooksManage", FormMethod.Get))
+{
+    <label title="Search Books"></label>
+    <input type="text" name="q" id="q" />
+    <input type="submit" value="Search" />
+}
+
+@section Scripts{
+  
+}
