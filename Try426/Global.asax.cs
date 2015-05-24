@@ -14,6 +14,7 @@ namespace Try426
     {
         protected void Application_Start()
         {
+		// make some change via notepad
             Database.SetInitializer(new BookDBInitializer());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
