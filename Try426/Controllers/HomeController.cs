@@ -23,7 +23,7 @@ namespace Try426.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
+//add a comment
             return View();
         }
     }
